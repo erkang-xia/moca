@@ -1,0 +1,10 @@
+/* src/components/TestLayout/TestLayout.module.css */
+.testContainer {
+  display: flex;
+  height: 100vh;
+}
+
+.questionContainer {
+  flex-grow: 1;
+  padding: 20px;
+}

@@ -1,0 +1,15 @@
+/* src/components/SideBar/SideBar.module.css */
+.sidebar {
+  width: 200px;
+  background-color: #f0f0f0;
+  padding: 10px;
+}
+
+.sidebar div {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.active {
+  background-color: #a8d5e2;
+}
