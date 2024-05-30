@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './SideBar.module.css';
+import { Outlet, Link } from 'react-router-dom';
 
 const SideBar = ({ selectedQuestion, setSelectedQuestion }) => {
   return (
@@ -8,13 +9,13 @@ const SideBar = ({ selectedQuestion, setSelectedQuestion }) => {
         onClick={() => setSelectedQuestion('Question 1')}
         className={selectedQuestion === 'Question 1' ? styles.active : ''}
       >
-        Question 1
+        <Link to={`userId/testId/Q1`}>Question 1</Link>
       </div>
       <div
         onClick={() => setSelectedQuestion('Question 2')}
         className={selectedQuestion === 'Question 2' ? styles.active : ''}
       >
-        Question 2
+        <Link to={`userId/testId/Q2`}>Question 2</Link>
       </div>
     </div>
   );
