@@ -17,6 +17,12 @@ const SideBar = ({ selectedQuestion, setSelectedQuestion }) => {
       >
         <Link to={`userId/testId/Q2`}>Question 2</Link>
       </div>
+      <div
+        onClick={() => setSelectedQuestion('Question 3')}
+        className={selectedQuestion === 'Question 3' ? styles.active : ''}
+      >
+        <Link to={`userId/testId/Q3`}>Question 3</Link>
+      </div>
     </div>
   );
 };

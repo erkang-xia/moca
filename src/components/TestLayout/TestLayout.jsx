@@ -21,7 +21,6 @@ const TestLayout = () => {
         <Question1 question={selectedQuestion} />
       </div> */}
       <Outlet />
-      <Input />
     </div>
   );
 };
