@@ -1,0 +1,24 @@
+.canvas_container {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border: 1px solid black;
+}
+/* Base class for all buttons */
+.canvas_button_base {
+  position: absolute;
+  transform: translate(
+    -50%,
+    -50%
+  ); /* Prevents the button from overflowing the boundary */
+}
+
+/* Specific class for default state */
+.canvas_button {
+  /* Additional styles specific to the default state can go here */
+}
+
+/* Specific class for clicked state */
+.canvas_button_clicked {
+  background-color: rgb(168, 213, 154); /* Specific style for clicked state */
+}
