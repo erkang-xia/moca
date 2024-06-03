@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styles from './Canvas.module.css';
+import axios from '../../../api/axios';
+import { TRAILMAKING } from '../../../constants/api';
 
 const Canvas = () => {
   const canvasRef = useRef(null);
@@ -33,15 +35,17 @@ const Canvas = () => {
             tempDots.length % 2 === 0
               ? (tempDots.length / 2 + 1).toString()
               : String.fromCharCode(65 + (tempDots.length - 1) / 2),
-          x: Math.random() * 260 + 20, // Adjust to ensure dots stay within bounds
-          y: Math.random() * 260 + 20,
+          x: Math.floor(Math.random() * 260) + 20, // Adjust to ensure dots stay within bounds
+          y: Math.floor(Math.random() * 260) + 20,
         };
         if (!doesOverlap(newDot, tempDots)) {
+          console.log('x: ' + newDot.x + 'y: ' + newDot.y);
           tempDots.push(newDot);
         }
       }
       return tempDots;
     };
+
     setDots(generateDots());
   }, []);
 
@@ -79,6 +83,21 @@ const Canvas = () => {
     }
   };
 
+  const handleSubmit = async () => {
+    const data = { dots, lines, clickSequence };
+    try {
+      const response = await axios.post(TRAILMAKING, data, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        withCredentials: true,
+      });
+      console.log('Response from backend:', response.data);
+    } catch (error) {
+      console.error('Error sending data to backend:', error);
+    }
+  };
+
   return (
     <div className={styles.canvas_container}>
       <canvas ref={canvasRef} width="300" height="300" />
@@ -101,7 +120,7 @@ const Canvas = () => {
       ))}
 
       <button onClick={() => handleBack()}> back </button>
-      <button> submit </button>
+      <button onClick={() => handleSubmit()}> submit </button>
     </div>
   );
 };

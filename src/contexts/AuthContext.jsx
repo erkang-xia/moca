@@ -1,4 +1,4 @@
-import { useContext, createContext, useState, useEffect } from 'react';
+import { useContext, createContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { LOGIN_ENDPOINT } from '../constants/api';
 import axios from '../api/axios';
@@ -16,13 +16,12 @@ const AuthProvider = ({ children }) => {
         headers: { 'Content-Type': 'application/json' },
       });
 
-      //TODO: design response
       if (response.data) {
         console.log(response.data.data);
-        setUserId(response.data.data.name);
-        console.log('AuthContext username:' + response.data.data.name);
+        setUserId(response.data.data.id);
+        console.log('AuthContext username:' + response.data.data.id);
         Cookies.set('token', response.data.data.token);
-        //TODO: Design Structure
+
         console.log('success');
         navigate(ROUTES.QUESTION_2);
         return;
