@@ -68,7 +68,7 @@ const Canvas = () => {
     }
   };
 
-  const habdleBack = () => {
+  const handleBack = () => {
     if (clickSequence.length > 0) {
       const newClickSequence = clickSequence.slice(0, clickSequence.length - 1);
       setClickSequence(newClickSequence);
@@ -100,7 +100,7 @@ const Canvas = () => {
         </button>
       ))}
 
-      <button onClick={() => habdleBack()}> back </button>
+      <button onClick={() => handleBack()}> back </button>
       <button> submit </button>
     </div>
   );

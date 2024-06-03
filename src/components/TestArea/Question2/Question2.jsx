@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Question2.module.css';
 import DrawingPad from './DrawingPad';
+import Test from '../../test';
 
 const Question2 = ({ question }) => {
   return (
@@ -18,6 +19,8 @@ const Question2 = ({ question }) => {
           height="300"
         ></img>
       </div>
+
+      <Test></Test>
     </div>
   );
 };
