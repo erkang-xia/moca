@@ -2,12 +2,15 @@ import React, { useState, useRef, useEffect } from 'react';
 import styles from './Canvas.module.css';
 import axios from '../../../api/axios';
 import { TRAILMAKING } from '../../../constants/api';
+import {useNavigate} from "react-router-dom";
+import {QUESTION_2} from "../../../constants/clientRoute";
 
 const Canvas = () => {
   const canvasRef = useRef(null);
   const [dots, setDots] = useState([]);
   const [lines, setLines] = useState([]);
   const [clickSequence, setClickSequence] = useState([]);
+  const navigate = useNavigate();
 
   // Function to check if a new dot overlaps with existing dots
   const doesOverlap = (newDot, existingDots) => {
@@ -84,7 +87,8 @@ const Canvas = () => {
   };
 
   const handleSubmit = async () => {
-    const data = { dots, lines, clickSequence };
+    const testId = crypto.randomUUID();
+    const data = { testId, dots, lines, clickSequence };
     try {
       const response = await axios.post(TRAILMAKING, data, {
         headers: {
@@ -92,7 +96,13 @@ const Canvas = () => {
         },
         withCredentials: true,
       });
-      console.log('Response from backend:', response.data);
+      console.log("submit question 1" + response.data)
+      if (response.data.code === 1) {
+        navigate(QUESTION_2);
+
+      }
+
+
     } catch (error) {
       console.error('Error sending data to backend:', error);
     }

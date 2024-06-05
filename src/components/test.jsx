@@ -5,7 +5,7 @@ const Test = () => {
   const navigate = useNavigate();
 
   const func = () => {
-    navigate('/test/Q1');
+    navigate('/test/Q3');
   };
 
   return (

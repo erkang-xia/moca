@@ -23,7 +23,7 @@ const AuthProvider = ({ children }) => {
         Cookies.set('token', response.data.data.token);
 
         console.log('success');
-        navigate(ROUTES.QUESTION_2);
+        navigate(ROUTES.QUESTION_1);
         return;
       }
       throw new Error(response.message);

@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from './Question4.module.css';
 import Input from '../../Input/Input';
+import {Link} from "react-router-dom";
+import { QUESTION_5} from "../../../constants/clientRoute";
 
 const Question4 = ({ question }) => {
   return (
@@ -17,7 +19,9 @@ const Question4 = ({ question }) => {
         />
         <div className={styles.input_container}>
           <Input />
-          <button>Submit</button>
+            <button>
+                <Link to={QUESTION_5}>submit</Link>
+            </button>
         </div>
       </div>
     </div>
