@@ -16,7 +16,7 @@ export default function App() {
       <Route path="/" element={<Login />} />
       <Route path={ROUTES.LOGIN} element={<Login />} />
       <Route path="/test" element={<Test />} />
-
+    {/* TODO：现在的pattern是whenever i fresh pages 重新login fix it*/}
       <Route element={<PrivateRoute />}>
         <Route path={ROUTES.QUESTION_1} element={<Question1 />} />
         <Route path={ROUTES.QUESTION_2} element={<Question2 />} />
