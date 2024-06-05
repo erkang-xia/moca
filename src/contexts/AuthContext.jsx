@@ -9,6 +9,8 @@ const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   const [userId, setUserId] = useState(null);
+  const testId = crypto.randomUUID();
+
   const navigate = useNavigate();
   const loginAction = async (data) => {
     try {
@@ -40,7 +42,7 @@ const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ userId, loginAction, logOut }}>
+    <AuthContext.Provider value={{ userId, testId, loginAction, logOut }}>
       {children}
     </AuthContext.Provider>
   );

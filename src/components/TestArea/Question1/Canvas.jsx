@@ -4,6 +4,7 @@ import axios from '../../../api/axios';
 import { TRAILMAKING } from '../../../constants/api';
 import {useNavigate} from "react-router-dom";
 import {QUESTION_2} from "../../../constants/clientRoute";
+import { useAuth } from '../../../contexts/AuthContext';
 
 const Canvas = () => {
   const canvasRef = useRef(null);
@@ -11,6 +12,7 @@ const Canvas = () => {
   const [lines, setLines] = useState([]);
   const [clickSequence, setClickSequence] = useState([]);
   const navigate = useNavigate();
+  const testId = useAuth().testId;
 
   // Function to check if a new dot overlaps with existing dots
   const doesOverlap = (newDot, existingDots) => {
@@ -87,8 +89,7 @@ const Canvas = () => {
   };
 
   const handleSubmit = async () => {
-    const testId = crypto.randomUUID();
-    const data = { testId, dots, lines, clickSequence };
+    const data = {  testId, dots, lines, clickSequence };
     try {
       const response = await axios.post(TRAILMAKING, data, {
         headers: {
