@@ -8,3 +8,8 @@ export const POST_CLOCK = '/test/visuospatial/clock';
 export const POST_CLOCK_EXPRESSION = '/test/visuospatial/clock_expression';
 export const CLOCK = 'clock';
 export const GEOMETRY = 'geometry';
+
+export const GET_ANIMAL = '/test/naming/animals';
+
+
+export const AWS_CLOUDFRONT = 'https://dtbnr9dbghh5t.cloudfront.net/';

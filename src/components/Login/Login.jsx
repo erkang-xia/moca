@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 const Login = () => {
+  const auth = useAuth();
   const [input, setInput] = useState({
     username: '',
     password: '',
+    testId : auth.testId,
   });
 
-  const auth = useAuth();
+
   const handleSubmitEvent = (e) => {
     e.preventDefault();
     console.log(input);
