@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Question1.module.css';
 import Canvas from './Canvas';
 
-const Question1 = ({ question }) => {
+const Question1 = () => {
   return (
     <div className={styles.question}>
       <h2>Question 1</h2>
@@ -13,6 +13,7 @@ const Question1 = ({ question }) => {
       </p>
       {/* Add more content based on the question */}
       <Canvas></Canvas>
+
     </div>
   );
 };

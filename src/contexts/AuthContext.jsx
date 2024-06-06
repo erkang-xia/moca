@@ -8,8 +8,12 @@ import Cookies from 'js-cookie';
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
+  //TODO: Fix this bug, why its keep refreashing?? use effect? consider using useref
   const [userId, setUserId] = useState(null);
-  const testId = crypto.randomUUID();
+  const [testId, setTestId] = useState( crypto.randomUUID());
+
+  console.log(testId)
+  console.log("userid:" + userId);
 
   const navigate = useNavigate();
   const loginAction = async (data) => {

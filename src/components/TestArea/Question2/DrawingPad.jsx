@@ -1,9 +1,15 @@
 import React, { useRef, useEffect, useState } from 'react';
+import {useAuth} from "../../../contexts/AuthContext";
+import axios from "../../../api/axios";
+import {useNavigate} from "react-router-dom";
 
-const DrawingPad = () => {
+
+const DrawingPad = ({question, path, type}) => {
   const canvasRef = useRef(null);
   const contextRef = useRef(null);
   const [isDrawing, setIsDrawing] = useState(false);
+  const navigate = useNavigate();
+  const testId = useAuth().testId;
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -49,11 +55,27 @@ const DrawingPad = () => {
 
   const saveCanvas = () => {
     const canvas = canvasRef.current;
-    const dataURL = canvas.toDataURL('image/png');
-    const link = document.createElement('a');
-    link.href = dataURL;
-    link.download = 'drawing.png';
-    link.click();
+    /**save to local
+     *
+     */
+    // const dataURL = canvas.toDataURL('image/png');
+    // const link = document.createElement('a');
+    // link.href = dataURL;
+    // link.download = 'drawing.png';
+    // link.click();
+
+    canvas.toBlob(async (blob) => {
+      const formData = new FormData();
+      formData.append('file', blob, `${testId}_${type}.png`);
+
+      try {
+        await axios.post(`${path}/${testId}`, formData);
+        console.log('Image uploaded successfully');
+        navigate(question)
+      } catch (error) {
+        console.error('Error uploading image:', error.response ? error.response.data : error.message);
+      }
+    }, 'image/png');
   };
 
   return (

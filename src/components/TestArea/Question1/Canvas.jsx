@@ -44,7 +44,6 @@ const Canvas = () => {
           y: Math.floor(Math.random() * 260) + 20,
         };
         if (!doesOverlap(newDot, tempDots)) {
-          console.log('x: ' + newDot.x + 'y: ' + newDot.y);
           tempDots.push(newDot);
         }
       }
@@ -97,7 +96,6 @@ const Canvas = () => {
         },
         withCredentials: true,
       });
-      console.log("submit question 1" + response.data)
       if (response.data.code === 1) {
         navigate(QUESTION_2);
 
