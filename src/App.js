@@ -9,6 +9,9 @@ import Test from './components/test';
 import Question3 from './components/TestArea/Question3/Question3';
 import Question5 from './components/TestArea/Question5/Question5';
 import Question4 from './components/TestArea/Question4/Question4';
+import Language from "./components/TestArea/Language/Language";
+import Memory from "./components/TestArea/Memory/Memory";
+import Attention from "./components/TestArea/Attention/Attention";
 
 export default function App() {
   return (
@@ -16,6 +19,8 @@ export default function App() {
       <Route path="/" element={<Login />} />
       <Route path={ROUTES.LOGIN} element={<Login />} />
       <Route path="/test" element={<Test />} />
+        <Route path={ROUTES.MEMORY} element={<Memory/>}/>
+        <Route path={ROUTES.ATTENTION} element={<Attention/>}/>
     {/* TODO：现在的pattern是whenever i fresh pages 重新login fix it*/}
       <Route element={<PrivateRoute />}>
         <Route path={ROUTES.QUESTION_1} element={<Question1 />} />
@@ -23,6 +28,7 @@ export default function App() {
         <Route path={ROUTES.QUESTION_3} element={<Question3 />} />
         <Route path={ROUTES.QUESTION_4} element={<Question4 />} />
         <Route path={ROUTES.QUESTION_5} element={<Question5 />} />
+          <Route path={ROUTES.LANGUAGE} element={<Language/>}/>
       </Route>
     </Routes>
   );
