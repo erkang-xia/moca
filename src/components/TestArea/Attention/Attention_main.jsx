@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import {Link} from "react-router-dom";
-import {MEMORY} from "../../../constants/clientRoute";
+import {Link, useNavigate} from "react-router-dom";
+import {ATTENTION_CLICK, MEMORY} from "../../../constants/clientRoute";
 
-const Attention = () => {
-    const instructionUrl = "/memory_intro.mp3"; // URL for the instruction audio
-    const sequenceUrls = ["/daisy.mp3", "/face.mp3", "/red.mp3", "/velvet.mp3", "/church.mp3"];
+const Attention_main = () => {
+    const instructionUrl = ["/red.mp3","/attention_intro2.mp3"]; // URL for the instruction audio
+    const [instructionalAudioIndex, setInstructionalAudioIndex] = useState(0);
+    const sequenceUrls = [["/daisy.mp3", "/face.mp3"],["/velvet.mp3", "/church.mp3"]];
     const [currentAudioIndex, setCurrentAudioIndex] = useState(-1);
     const [instructionPlayed, setInstructionPlayed] = useState(false);
     const [audioPlayed, setAudioPlayed] = useState(false);
@@ -12,12 +13,16 @@ const Attention = () => {
     const [recordedAudio, setRecordedAudio] = useState(null);
     const audioRef = useRef(null);
     const mediaRecorderRef = useRef(null);
+    const navigate = useNavigate();
 
 
     const playInstructionAudio = () => {
-        audioRef.current.src = instructionUrl;
+        audioRef.current.src = instructionUrl[instructionalAudioIndex];
         audioRef.current.play();
-        audioRef.current.onended = () => setInstructionPlayed(true);
+        audioRef.current.onended = () => {
+            setInstructionPlayed(true);
+            setInstructionalAudioIndex(instructionalAudioIndex+1)
+        }
     };
 
     const playNextAudio = () => {
@@ -27,12 +32,29 @@ const Attention = () => {
             }, 1000);
         }else{
             setAudioPlayed(true);
+
         }
     };
 
+    const submitHandler = () =>{
+        //TODO: handle submit
+
+        if(instructionalAudioIndex < instructionUrl.length){
+            //handle state
+            setInstructionPlayed(false);
+            setAudioPlayed(false);
+        }else{
+            navigate(ATTENTION_CLICK);
+
+        }
+
+
+
+    }
+
     useEffect(() => {
         if (currentAudioIndex >= 0 && currentAudioIndex < sequenceUrls.length) {
-            audioRef.current.src = sequenceUrls[currentAudioIndex];
+            audioRef.current.src = sequenceUrls[instructionalAudioIndex-1][currentAudioIndex];
             audioRef.current.play();
             audioRef.current.onended = playNextAudio;
         }
@@ -41,6 +63,7 @@ const Attention = () => {
     const startSequence = () => {
         setCurrentAudioIndex(0);
     };
+
 
     const startRecording = () => {
         navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
@@ -80,17 +103,17 @@ const Attention = () => {
             {!instructionPlayed && (
                 <button onClick={playInstructionAudio}>Play Instruction</button>
             )}
-            {instructionPlayed && currentAudioIndex === -1 && (
+            {instructionPlayed && !audioPlayed &&(
                 <button onClick={startSequence}>Start Sequence</button>
             )}
             <div>
                 {audioPlayed && (<button onClick={startRecording} disabled={recording}>Start Recording</button> )}
                 {audioPlayed && (<button onClick={stopRecording} disabled={!recording}>Stop Recording</button> )}
                 {audioPlayed && (<button onClick={playRecordedAudio} disabled={!recordedAudio}>Play Recording</button> )}
-                {audioPlayed && (<button> <Link to={MEMORY}>sumbit</Link> </button>)}
+                {audioPlayed && (<button onClick={submitHandler}> submit </button>)}
             </div>
         </div>
     );
 };
 
-export default Attention;
+export default Attention_main;

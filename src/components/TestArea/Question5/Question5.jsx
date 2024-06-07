@@ -1,7 +1,7 @@
 import styles from './Question5.module.css';
 import React, { useState, useEffect } from 'react';
 import {Link} from "react-router-dom";
-import {ATTENTION, LANGUAGE} from "../../../constants/clientRoute";
+import {ATTENTION_MAIN, LANGUAGE} from "../../../constants/clientRoute";
 
 const useAudio = (urls) => {
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);

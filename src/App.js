@@ -11,7 +11,8 @@ import Question5 from './components/TestArea/Question5/Question5';
 import Question4 from './components/TestArea/Question4/Question4';
 import Language from "./components/TestArea/Language/Language";
 import Memory from "./components/TestArea/Memory/Memory";
-import Attention from "./components/TestArea/Attention/Attention";
+import Attention_main from "./components/TestArea/Attention/Attention_main";
+import Attention_click from "./components/TestArea/Attention/Attention.click";
 
 export default function App() {
   return (
@@ -20,7 +21,8 @@ export default function App() {
       <Route path={ROUTES.LOGIN} element={<Login />} />
       <Route path="/test" element={<Test />} />
         <Route path={ROUTES.MEMORY} element={<Memory/>}/>
-        <Route path={ROUTES.ATTENTION} element={<Attention/>}/>
+        <Route path={ROUTES.ATTENTION_MAIN} element={<Attention_main/>}/>
+        <Route path={ROUTES.ATTENTION_CLICK} element={<Attention_click/>}/>
     {/* TODO：现在的pattern是whenever i fresh pages 重新login fix it*/}
       <Route element={<PrivateRoute />}>
         <Route path={ROUTES.QUESTION_1} element={<Question1 />} />
