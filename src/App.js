@@ -12,7 +12,8 @@ import Question4 from './components/TestArea/Question4/Question4';
 import Language from "./components/TestArea/Language/Language";
 import Memory from "./components/TestArea/Memory/Memory";
 import Attention_main from "./components/TestArea/Attention/Attention_main";
-import Attention_click from "./components/TestArea/Attention/Attention.click";
+import Attention_click from "./components/TestArea/Attention/Attention_click";
+import Attention_math from "./components/TestArea/Attention/Attention_math";
 
 export default function App() {
   return (
@@ -23,6 +24,8 @@ export default function App() {
         <Route path={ROUTES.MEMORY} element={<Memory/>}/>
         <Route path={ROUTES.ATTENTION_MAIN} element={<Attention_main/>}/>
         <Route path={ROUTES.ATTENTION_CLICK} element={<Attention_click/>}/>
+        <Route path={ROUTES.ATTENTION_MATH} element={<Attention_math/>}/>
+        <Route path={ROUTES.LANGUAGE} element={<Language/>}/>
     {/* TODO：现在的pattern是whenever i fresh pages 重新login fix it*/}
       <Route element={<PrivateRoute />}>
         <Route path={ROUTES.QUESTION_1} element={<Question1 />} />
@@ -30,7 +33,7 @@ export default function App() {
         <Route path={ROUTES.QUESTION_3} element={<Question3 />} />
         <Route path={ROUTES.QUESTION_4} element={<Question4 />} />
         <Route path={ROUTES.QUESTION_5} element={<Question5 />} />
-          <Route path={ROUTES.LANGUAGE} element={<Language/>}/>
+
       </Route>
     </Routes>
   );

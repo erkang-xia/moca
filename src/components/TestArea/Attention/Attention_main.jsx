@@ -26,7 +26,7 @@ const Attention_main = () => {
     };
 
     const playNextAudio = () => {
-        if (currentAudioIndex < sequenceUrls.length - 1) {
+        if (currentAudioIndex < sequenceUrls[instructionalAudioIndex-1].length - 1) {
             setTimeout(() => {
                 setCurrentAudioIndex(currentAudioIndex + 1);
             }, 1000);
@@ -53,7 +53,7 @@ const Attention_main = () => {
     }
 
     useEffect(() => {
-        if (currentAudioIndex >= 0 && currentAudioIndex < sequenceUrls.length) {
+        if (currentAudioIndex >= 0 && currentAudioIndex < sequenceUrls[instructionalAudioIndex-1].length) {
             audioRef.current.src = sequenceUrls[instructionalAudioIndex-1][currentAudioIndex];
             audioRef.current.play();
             audioRef.current.onended = playNextAudio;
