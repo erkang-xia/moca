@@ -14,6 +14,10 @@ import Memory from "./components/TestArea/Memory/Memory";
 import Attention_main from "./components/TestArea/Attention/Attention_main";
 import Attention_click from "./components/TestArea/Attention/Attention_click";
 import Attention_math from "./components/TestArea/Attention/Attention_math";
+import Language_fluency from "./components/TestArea/Language/Language_fluency";
+import Abstraction from "./components/TestArea/Abstraction/Abstraction";
+import Orientation from "./components/TestArea/Orientation /Orientation";
+import Memory_test from "./components/TestArea/Memory/Memory_test";
 
 export default function App() {
   return (
@@ -22,10 +26,18 @@ export default function App() {
       <Route path={ROUTES.LOGIN} element={<Login />} />
       <Route path="/test" element={<Test />} />
         <Route path={ROUTES.MEMORY} element={<Memory/>}/>
+        <Route path={ROUTES.MEMORY_TEST} element={<Memory_test/>}/>
         <Route path={ROUTES.ATTENTION_MAIN} element={<Attention_main/>}/>
         <Route path={ROUTES.ATTENTION_CLICK} element={<Attention_click/>}/>
         <Route path={ROUTES.ATTENTION_MATH} element={<Attention_math/>}/>
         <Route path={ROUTES.LANGUAGE} element={<Language/>}/>
+        <Route path={ROUTES.LANGUAGE_FLUENCY} element={<Language_fluency/>}/>
+        <Route path={ROUTES.LANGUAGE_FLUENCY} element={<Language_fluency/>}/>
+
+        <Route path={ROUTES.ABSTRACTION} element={<Abstraction/>}/>
+        <Route path={ROUTES.ORIENTATION} element={<Orientation/>}/>
+
+
     {/* TODO：现在的pattern是whenever i fresh pages 重新login fix it*/}
       <Route element={<PrivateRoute />}>
         <Route path={ROUTES.QUESTION_1} element={<Question1 />} />

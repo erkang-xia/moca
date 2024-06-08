@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import {Link} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
+import { LANGUAGE_FLUENCY} from "../../../constants/clientRoute";
 
 const Language = () => {
-    const instructionUrl = "/memory_intro.mp3"; // URL for the instruction audio
-    const sequenceUrls = ["/daisy.mp3", "/face.mp3", "/red.mp3", "/velvet.mp3", "/church.mp3"];
+    const instructionUrl = ["/language_intro1.mp3","/language_intro2.mp3"]; // URL for the instruction audio
+    const [instructionalAudioIndex, setInstructionalAudioIndex] = useState(0);
+    const sequenceUrls = [["/daisy.mp3", "/face.mp3"],["/velvet.mp3", "/church.mp3"]];
     const [currentAudioIndex, setCurrentAudioIndex] = useState(-1);
     const [instructionPlayed, setInstructionPlayed] = useState(false);
     const [audioPlayed, setAudioPlayed] = useState(false);
@@ -11,28 +13,48 @@ const Language = () => {
     const [recordedAudio, setRecordedAudio] = useState(null);
     const audioRef = useRef(null);
     const mediaRecorderRef = useRef(null);
+    const navigate = useNavigate();
 
 
     const playInstructionAudio = () => {
-        audioRef.current.src = instructionUrl;
+        audioRef.current.src = instructionUrl[instructionalAudioIndex];
         audioRef.current.play();
-        audioRef.current.onended = () => setInstructionPlayed(true);
-    };
-
-    const playNextAudio = () => {
-        if (currentAudioIndex < sequenceUrls.length - 1) {
-            setTimeout(() => {
-                setCurrentAudioIndex(currentAudioIndex + 1);
-                console.log("checkpoint 6")
-            }, 1000);
-        }else{
-            setAudioPlayed(true);
+        audioRef.current.onended = () => {
+            setInstructionPlayed(true);
+            setInstructionalAudioIndex(instructionalAudioIndex+1)
         }
     };
 
+    const playNextAudio = () => {
+        if (currentAudioIndex < sequenceUrls[instructionalAudioIndex-1].length - 1) {
+            setTimeout(() => {
+                setCurrentAudioIndex(currentAudioIndex + 1);
+            }, 1000);
+        }else{
+            setAudioPlayed(true);
+
+        }
+    };
+
+    const submitHandler = () =>{
+        //TODO: handle submit
+
+        if(instructionalAudioIndex < instructionUrl.length){
+            //handle state
+            setInstructionPlayed(false);
+            setAudioPlayed(false);
+        }else{
+            navigate(LANGUAGE_FLUENCY);
+
+        }
+
+
+
+    }
+
     useEffect(() => {
-        if (currentAudioIndex >= 0 && currentAudioIndex < sequenceUrls.length) {
-            audioRef.current.src = sequenceUrls[currentAudioIndex];
+        if (currentAudioIndex >= 0 && currentAudioIndex < sequenceUrls[instructionalAudioIndex-1].length) {
+            audioRef.current.src = sequenceUrls[instructionalAudioIndex-1][currentAudioIndex];
             audioRef.current.play();
             audioRef.current.onended = playNextAudio;
         }
@@ -41,6 +63,7 @@ const Language = () => {
     const startSequence = () => {
         setCurrentAudioIndex(0);
     };
+
 
     const startRecording = () => {
         navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
@@ -80,13 +103,14 @@ const Language = () => {
             {!instructionPlayed && (
                 <button onClick={playInstructionAudio}>Play Instruction</button>
             )}
-            {instructionPlayed && currentAudioIndex === -1 && (
+            {instructionPlayed && !audioPlayed &&(
                 <button onClick={startSequence}>Start Sequence</button>
             )}
             <div>
                 {audioPlayed && (<button onClick={startRecording} disabled={recording}>Start Recording</button> )}
                 {audioPlayed && (<button onClick={stopRecording} disabled={!recording}>Stop Recording</button> )}
                 {audioPlayed && (<button onClick={playRecordedAudio} disabled={!recordedAudio}>Play Recording</button> )}
+                {audioPlayed && (<button onClick={submitHandler}> submit </button>)}
             </div>
         </div>
     );

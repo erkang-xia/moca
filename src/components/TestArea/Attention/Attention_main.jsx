@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import {Link, useNavigate} from "react-router-dom";
-import {ATTENTION_CLICK, MEMORY} from "../../../constants/clientRoute";
+import { useNavigate} from "react-router-dom";
+import {ATTENTION_CLICK} from "../../../constants/clientRoute";
 
 const Attention_main = () => {
     const instructionUrl = ["/red.mp3","/attention_intro2.mp3"]; // URL for the instruction audio

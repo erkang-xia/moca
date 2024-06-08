@@ -8,8 +8,9 @@ export const QUESTION_5 = '/test/Q5';
 export const ATTENTION_MAIN = '/test/attention_main';
 export const ATTENTION_CLICK = '/test/attention_click';
 export const ATTENTION_MATH = '/test/attention_math';
-
 export const LANGUAGE = '/test/language';
+export const LANGUAGE_FLUENCY = '/test/language_fluency';
 export const MEMORY = '/test/memory';
+export const MEMORY_TEST = '/test/memory_test';
 export const ABSTRACTION = '/test/abstraction';
 export const ORIENTATION = '/test/orientation';
