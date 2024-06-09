@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import {ABSTRACTION} from "../../../constants/clientRoute";
+import { ABSTRACTION } from "../../../constants/clientRoute";
+import styles from './Language_fluency.module.css'; // Importing CSS module
 
 const LanguageFluency = () => {
     const instructionUrl = "/language_intro3.mp3"; // URL for the instruction audio
@@ -38,7 +39,7 @@ const LanguageFluency = () => {
             // Set timer for 60 seconds to stop recording automatically
             const timerId = setTimeout(() => {
                 stopRecording();
-            }, 6000);
+            }, 60000);
             setTimer(timerId);
         });
         setRecording(true);
@@ -70,38 +71,33 @@ const LanguageFluency = () => {
         };
     }, [timer]);
 
-    const submitHandler = () =>{
-        navigate(ABSTRACTION)
-    }
+    const submitHandler = () => {
+        navigate(ABSTRACTION);
+    };
 
     return (
-        <div>
-            <h1>MOCA Test Simulation: Repeat the Sequence</h1>
-            <audio ref={audioRef} style={{ display: 'none' }}>
+        <div className={styles.container}>
+            <h1 className={styles.title}>Language: Fluency </h1>
+            <audio ref={audioRef} className={styles.hiddenAudio}>
                 Your browser does not support the audio element.
             </audio>
             {!instructionPlayed && (
-                <button onClick={playInstructionAudio}>Play Instruction</button>
+                <button onClick={playInstructionAudio} className={styles.button}>Play Instruction</button>
             )}
             {instructionPlayed && (
-                <h3>Words start with " B " </h3>
+                <h3 className={styles.subtitle}>Words start with "B"</h3>
             )}
 
             <div>
                 {instructionPlayed && !recordedAudio && (
-                    <button onClick={startRecording} disabled={recording || recordedAudio}>
+                    <button onClick={startRecording} disabled={recording || recordedAudio} className={recording || recordedAudio ? styles.buttonDisabled : styles.button}>
                         Start Recording
                     </button>
                 )}
                 {recordedAudio && (
                     <>
-                        <button onClick={playRecordedAudio}>Play Recording</button>
-                    </>
-                )}
-
-                {recordedAudio && (
-                    <>
-                        <button onClick={submitHandler}>submit</button>
+                        <button onClick={playRecordedAudio} className={styles.button}>Play Recording</button>
+                        <button onClick={submitHandler} className={styles.button}>Submit</button>
                     </>
                 )}
             </div>

@@ -1,0 +1,39 @@
+.container {
+    @apply max-w-3xl mx-auto p-4 bg-white shadow-md rounded-lg mt-8 text-center;
+}
+
+.title {
+    @apply text-2xl font-bold mb-4;
+}
+
+.instructions {
+    @apply mb-4;
+}
+
+.form {
+    @apply flex flex-col items-center;
+}
+
+.input {
+    @apply mb-2 p-2 border border-gray-300 rounded w-64;
+}
+
+.button {
+    @apply bg-blue-500 text-white py-2 px-4 rounded mt-2 mr-2;
+}
+
+.error {
+    @apply text-red-500 mt-2;
+}
+
+.historyContainer {
+    @apply mt-4;
+}
+
+.historyTitle {
+    @apply text-xl font-bold mb-2;
+}
+
+.historyItem {
+    @apply mb-1;
+}

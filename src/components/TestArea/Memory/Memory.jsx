@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import {Link} from "react-router-dom";
-import {MEMORY} from "../../../constants/clientRoute";
+import { Link } from "react-router-dom";
+import {ATTENTION_MAIN} from "../../../constants/clientRoute";
+import styles from './Memory.module.css'; // Importing CSS module
 
 const Memory = () => {
     const instructionUrl = "/memory_intro.mp3"; // URL for the instruction audio
@@ -13,7 +14,6 @@ const Memory = () => {
     const audioRef = useRef(null);
     const mediaRecorderRef = useRef(null);
 
-
     const playInstructionAudio = () => {
         audioRef.current.src = instructionUrl;
         audioRef.current.play();
@@ -25,7 +25,7 @@ const Memory = () => {
             setTimeout(() => {
                 setCurrentAudioIndex(currentAudioIndex + 1);
             }, 1000);
-        }else{
+        } else {
             setAudioPlayed(true);
         }
     };
@@ -72,25 +72,37 @@ const Memory = () => {
     };
 
     return (
-        <div>
-            <h1>MOCA Test Simulation: Repeat the Sequence</h1>
-            <audio ref={audioRef} style={{ display: 'none' }}>
+        <div className={styles.container}>
+            <h1 className={styles.title}>MOCA Test Simulation: Repeat the Sequence</h1>
+            <audio ref={audioRef} className={styles.hiddenAudio}>
                 Your browser does not support the audio element.
             </audio>
             {!instructionPlayed && (
-                <button onClick={playInstructionAudio}>Play Instruction</button>
+                <button onClick={playInstructionAudio} className={styles.button}>Play Instruction</button>
             )}
             {instructionPlayed && currentAudioIndex === -1 && (
-                <button onClick={startSequence}>Start Sequence</button>
+                <button onClick={startSequence} className={styles.button}>Start Sequence</button>
             )}
             <div>
-                {audioPlayed && (<button onClick={startRecording} disabled={recording}>Start Recording</button> )}
-                {audioPlayed && (<button onClick={stopRecording} disabled={!recording}>Stop Recording</button> )}
-                {audioPlayed && (<button onClick={playRecordedAudio} disabled={!recordedAudio}>Play Recording</button> )}
-                {audioPlayed && (<button> <Link to={MEMORY}>sumbit</Link> </button>)}
+                {audioPlayed && (
+                    <>
+                        <button onClick={startRecording} disabled={recording} className={recording ? styles.buttonDisabled : styles.button}>
+                            Start Recording
+                        </button>
+                        <button onClick={stopRecording} disabled={!recording} className={!recording ? styles.buttonDisabled : styles.button}>
+                            Stop Recording
+                        </button>
+                        <button onClick={playRecordedAudio} disabled={!recordedAudio} className={!recordedAudio ? styles.buttonDisabled : styles.button}>
+                            Play Recording
+                        </button>
+                        <button className={styles.buttonLink}>
+                            <Link to={ATTENTION_MAIN}>Submit</Link>
+                        </button>
+                    </>
+                )}
             </div>
         </div>
-                    );
-                };
+    );
+};
 
 export default Memory;

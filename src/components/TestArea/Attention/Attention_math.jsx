@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import {useNavigate} from "react-router-dom";
-import {LANGUAGE} from "../../../constants/clientRoute";
+import { useNavigate } from "react-router-dom";
+import { LANGUAGE } from "../../../constants/clientRoute";
+import styles from './Attention_math.module.css'; // Importing CSS module
 
 const Attention_math = () => {
     const [currentNumber, setCurrentNumber] = useState(100);
@@ -8,6 +9,7 @@ const Attention_math = () => {
     const [history, setHistory] = useState([]);
     const [error, setError] = useState('');
     const navigate = useNavigate();
+
     const handleInputChange = (event) => {
         setUserInput(event.target.value);
     };
@@ -22,9 +24,8 @@ const Attention_math = () => {
             setCurrentNumber(userAnswer);
             setHistory(prev => [...prev, userAnswer]);
             setError('');
-            if(history.length > 4){
+            if (history.length > 4) {
                 navigate(LANGUAGE);
-
             }
         } else {
             setError("That's incorrect. Please try again.");
@@ -38,19 +39,19 @@ const Attention_math = () => {
     };
 
     return (
-        <div>
-            <h1>Serial 7s Test</h1>
-            <p>Start from 100 and repeatedly subtract 7. Enter each answer in the input field below.</p>
-            <form onSubmit={handleSubmit}>
-                <input type="number" value={userInput} onChange={handleInputChange} />
-                <button type="submit">Submit</button>
+        <div className={styles.container}>
+            <h1 className={styles.title}>Attention: Subtract by 7</h1>
+            <p className={styles.instructions}>Start from 100 and repeatedly subtract 7. Enter each answer in the input field below.</p>
+            <form onSubmit={handleSubmit} className={styles.form}>
+                <input type="number" value={userInput} onChange={handleInputChange} className={styles.input} />
+                <button type="submit" className={styles.button}>Submit</button>
             </form>
-            <button onClick={repeatInstructions}>Help</button>
-            {error && <p className="error">{error}</p>}
-            <div>
-                <h2>History</h2>
+            <button onClick={repeatInstructions} className={styles.button}>Help</button>
+            {error && <p className={styles.error}>{error}</p>}
+            <div className={styles.historyContainer}>
+                <h2 className={styles.historyTitle}>History</h2>
                 {history.length > 0 ? history.map((number, index) => (
-                    <p key={index}>{number}</p>
+                    <p key={index} className={styles.historyItem}>{number}</p>
                 )) : <p>No answers submitted yet.</p>}
             </div>
         </div>

@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate} from "react-router-dom";
-import { LANGUAGE_FLUENCY} from "../../../constants/clientRoute";
+import { useNavigate } from "react-router-dom";
+import { LANGUAGE_FLUENCY } from "../../../constants/clientRoute";
+import styles from './Language.module.css'; // Importing CSS module
 
 const Language = () => {
-    const instructionUrl = ["/language_intro1.mp3","/language_intro2.mp3"]; // URL for the instruction audio
+    const instructionUrl = ["/language_intro1.mp3", "/language_intro2.mp3"]; // URL for the instruction audio
     const [instructionalAudioIndex, setInstructionalAudioIndex] = useState(0);
-    const sequenceUrls = [["/daisy.mp3", "/face.mp3"],["/velvet.mp3", "/church.mp3"]];
+    const sequenceUrls = [["/sentence_example1.mp3"], ["/sentence_example2.mp3"]];
     const [currentAudioIndex, setCurrentAudioIndex] = useState(-1);
     const [instructionPlayed, setInstructionPlayed] = useState(false);
     const [audioPlayed, setAudioPlayed] = useState(false);
@@ -15,55 +16,53 @@ const Language = () => {
     const mediaRecorderRef = useRef(null);
     const navigate = useNavigate();
 
-
     const playInstructionAudio = () => {
         audioRef.current.src = instructionUrl[instructionalAudioIndex];
         audioRef.current.play();
         audioRef.current.onended = () => {
             setInstructionPlayed(true);
-            setInstructionalAudioIndex(instructionalAudioIndex+1)
-        }
+            setInstructionalAudioIndex(instructionalAudioIndex + 1);
+        };
     };
 
     const playNextAudio = () => {
-        if (currentAudioIndex < sequenceUrls[instructionalAudioIndex-1].length - 1) {
+        if (currentAudioIndex < sequenceUrls[instructionalAudioIndex - 1].length - 1) {
             setTimeout(() => {
                 setCurrentAudioIndex(currentAudioIndex + 1);
             }, 1000);
-        }else{
+        } else {
             setAudioPlayed(true);
-
         }
     };
 
-    const submitHandler = () =>{
-        //TODO: handle submit
+    const submitHandler = () => {
+        // TODO: handle submit
 
-        if(instructionalAudioIndex < instructionUrl.length){
-            //handle state
+
+        setCurrentAudioIndex(-1);
+
+        if (instructionalAudioIndex < instructionUrl.length) {
+            // handle state
             setInstructionPlayed(false);
             setAudioPlayed(false);
-        }else{
+        } else {
             navigate(LANGUAGE_FLUENCY);
-
         }
-
-
-
-    }
+    };
 
     useEffect(() => {
-        if (currentAudioIndex >= 0 && currentAudioIndex < sequenceUrls[instructionalAudioIndex-1].length) {
-            audioRef.current.src = sequenceUrls[instructionalAudioIndex-1][currentAudioIndex];
+        console.log("useeffect called ")
+        if (currentAudioIndex >= 0 && currentAudioIndex < sequenceUrls[instructionalAudioIndex - 1].length) {
+            audioRef.current.src = sequenceUrls[instructionalAudioIndex - 1][currentAudioIndex];
             audioRef.current.play();
             audioRef.current.onended = playNextAudio;
         }
     }, [currentAudioIndex]);
 
     const startSequence = () => {
+
         setCurrentAudioIndex(0);
     };
-
 
     const startRecording = () => {
         navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
@@ -95,22 +94,32 @@ const Language = () => {
     };
 
     return (
-        <div>
-            <h1>MOCA Test Simulation: Repeat the Sequence</h1>
-            <audio ref={audioRef} style={{ display: 'none' }}>
+        <div className={styles.container}>
+            <h1 className={styles.title}>Language: Repeat Sentence</h1>
+            <audio ref={audioRef} className={styles.hiddenAudio}>
                 Your browser does not support the audio element.
             </audio>
             {!instructionPlayed && (
-                <button onClick={playInstructionAudio}>Play Instruction</button>
+                <button onClick={playInstructionAudio} className={styles.button}>Play Instruction</button>
             )}
-            {instructionPlayed && !audioPlayed &&(
-                <button onClick={startSequence}>Start Sequence</button>
+            {instructionPlayed && !audioPlayed && (
+                <button onClick={startSequence} className={styles.button}>Start Sequence</button>
             )}
             <div>
-                {audioPlayed && (<button onClick={startRecording} disabled={recording}>Start Recording</button> )}
-                {audioPlayed && (<button onClick={stopRecording} disabled={!recording}>Stop Recording</button> )}
-                {audioPlayed && (<button onClick={playRecordedAudio} disabled={!recordedAudio}>Play Recording</button> )}
-                {audioPlayed && (<button onClick={submitHandler}> submit </button>)}
+                {audioPlayed && (
+                    <>
+                        <button onClick={startRecording} disabled={recording} className={recording ? styles.buttonDisabled : styles.button}>
+                            Start Recording
+                        </button>
+                        <button onClick={stopRecording} disabled={!recording} className={!recording ? styles.buttonDisabled : styles.button}>
+                            Stop Recording
+                        </button>
+                        <button onClick={playRecordedAudio} disabled={!recordedAudio} className={!recordedAudio ? styles.buttonDisabled : styles.button}>
+                            Play Recording
+                        </button>
+                        <button onClick={submitHandler} className={styles.button}>Submit</button>
+                    </>
+                )}
             </div>
         </div>
     );

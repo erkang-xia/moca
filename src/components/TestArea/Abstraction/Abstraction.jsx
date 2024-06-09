@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import {useNavigate} from "react-router-dom";
-import {ABSTRACTION, MEMORY_TEST} from "../../../constants/clientRoute";
+import { useNavigate } from "react-router-dom";
+import { MEMORY_TEST } from "../../../constants/clientRoute";
+import styles from './Abstraction.module.css'; // Importing CSS module
 
 const Abstraction = () => {
   const trials = [
@@ -37,27 +38,27 @@ const Abstraction = () => {
     if (currentTrialIndex < trials.length - 1) {
       setCurrentTrialIndex(currentTrialIndex + 1);
     } else {
-      navigate(MEMORY_TEST)
-
+      navigate(MEMORY_TEST);
     }
     setPromptGiven(false); // Reset prompt given status for the next trial
   };
 
   return (
-      <div>
-        <h1>Abstraction Task</h1>
-        <p>
+      <div className={styles.container}>
+        <h1 className={styles.title}>Abstraction Task</h1>
+        <p className={styles.instructions}>
           I will show you two words and I would like you to tell me to what category they belong to:
-          <strong> {trials[currentTrialIndex].words.join(" and ")}.</strong>
+          <strong className={styles.words}> {trials[currentTrialIndex].words.join(" and ")}.</strong>
         </p>
         <input
             type="text"
             value={userResponse}
             onChange={handleUserInput}
             placeholder="Enter category"
+            className={styles.input}
         />
-        <button onClick={handleSubmit}>Submit</button>
-        {feedback && <p>{feedback}</p>}
+        <button onClick={handleSubmit} className={styles.button}>Submit</button>
+        {feedback && <p className={styles.feedback}>{feedback}</p>}
       </div>
   );
 };

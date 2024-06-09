@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import {useNavigate} from "react-router-dom";
-import {ORIENTATION} from "../../../constants/clientRoute";
+import { useNavigate } from "react-router-dom";
+import { ORIENTATION } from "../../../constants/clientRoute";
+import styles from './Memory_test.module.css'; // Importing CSS module
 
 const Memory_test = () => {
     const [words, setWords] = useState(Array(5).fill(''));  // Initializes an array of 5 empty strings
@@ -16,12 +17,15 @@ const Memory_test = () => {
     const handleSubmit = (event) => {
         event.preventDefault();  // Prevent the form from submitting in the traditional way
         setSubmission(words.join(', '));  // Join the words array into a string and set it as the submission
-        navigate(ORIENTATION)
+        navigate(ORIENTATION);
     };
 
     return (
-        <div>
-            <h1>Memory Test</h1>
+        <div className={styles.container}>
+            <h1 className={styles.title}>Memory Test</h1>
+            <p className={styles.instructions}>
+                I read some words to you earlier, which I asked you to remember. Tell me as many of those words as you can remember.
+            </p>
             <form onSubmit={handleSubmit}>
                 {words.map((word, index) => (
                     <input
@@ -30,12 +34,12 @@ const Memory_test = () => {
                         value={word}
                         onChange={handleInputChange(index)}
                         placeholder={`Word ${index + 1}`}
-                        style={{margin: '10px'}}
+                        className={styles.input}
                     />
                 ))}
-                <button type="submit">Submit</button>
+                <button type="submit" className={styles.button}>Submit</button>
             </form>
-            {submission && <p>You submitted: {submission}</p>}
+            {submission && <p className={styles.submission}>You submitted: {submission}</p>}
         </div>
     );
 };

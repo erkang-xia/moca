@@ -1,0 +1,15 @@
+.question {
+    @apply max-w-3xl mx-auto p-4 bg-white shadow-md rounded-lg mt-8;
+}
+
+.playButton {
+    @apply bg-green-500 text-white p-2 rounded mr-4;
+}
+
+.linkButton {
+    @apply bg-blue-500 text-white p-2 rounded;
+}
+
+.trackInfo {
+    @apply mt-4;
+}
