@@ -1,10 +1,10 @@
 import React, { useRef, useEffect, useState } from 'react';
-import {useAuth} from "../../../contexts/AuthContext";
+import { useAuth } from "../../../contexts/AuthContext";
 import axios from "../../../api/axios";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import styles from './DrawingPad.module.css'; // Importing CSS module
 
-
-const DrawingPad = ({question, path, type}) => {
+const DrawingPad = ({ question, path, type }) => {
   const canvasRef = useRef(null);
   const contextRef = useRef(null);
   const [isDrawing, setIsDrawing] = useState(false);
@@ -55,15 +55,6 @@ const DrawingPad = ({question, path, type}) => {
 
   const saveCanvas = () => {
     const canvas = canvasRef.current;
-    /**save to local
-     *
-     */
-    // const dataURL = canvas.toDataURL('image/png');
-    // const link = document.createElement('a');
-    // link.href = dataURL;
-    // link.download = 'drawing.png';
-    // link.click();
-
     canvas.toBlob(async (blob) => {
       const formData = new FormData();
       formData.append('file', blob, `${testId}_${type}.png`);
@@ -71,7 +62,7 @@ const DrawingPad = ({question, path, type}) => {
       try {
         await axios.post(`${path}/${testId}`, formData);
         console.log('Image uploaded successfully');
-        navigate(question)
+        navigate(question);
       } catch (error) {
         console.error('Error uploading image:', error.response ? error.response.data : error.message);
       }
@@ -79,22 +70,20 @@ const DrawingPad = ({question, path, type}) => {
   };
 
   return (
-    <div
-      style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
-    >
-      <canvas
-        onMouseDown={startDrawing}
-        onMouseUp={stopDrawing}
-        onMouseMove={draw}
-        onMouseOut={stopDrawing}
-        ref={canvasRef}
-        style={{ border: '1px solid black' }}
-      />
-      <div style={{ marginTop: '10px' }}>
-        <button onClick={clearCanvas}>Clear</button>
-        <button onClick={saveCanvas}>Save as Image</button>
+      <div className={styles.canvasContainer}>
+        <canvas
+            onMouseDown={startDrawing}
+            onMouseUp={stopDrawing}
+            onMouseMove={draw}
+            onMouseOut={stopDrawing}
+            ref={canvasRef}
+            className={styles.canvas}
+        />
+        <div className={styles.buttonGroup}>
+          <button onClick={clearCanvas} className={styles.clearButton}>Clear</button>
+          <button onClick={saveCanvas} className={styles.saveButton}>Save as Image</button>
+        </div>
       </div>
-    </div>
   );
 };
 

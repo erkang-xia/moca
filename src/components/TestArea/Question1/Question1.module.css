@@ -1,4 +1,15 @@
-/* src/components/TestArea/Question1.module.css */
 .question {
-  /* Add styles specific to the Question component */
+    @apply max-w-3xl mx-auto p-4 bg-white shadow-md rounded-lg;
+}
+
+.questionTitle {
+    @apply text-2xl font-bold mb-4;
+}
+
+.questionText {
+    @apply mb-4;
+}
+
+.canvasWrapper {
+    @apply flex justify-center items-center mt-4;
 }

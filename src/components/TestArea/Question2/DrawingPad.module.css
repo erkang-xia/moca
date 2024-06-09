@@ -1,0 +1,19 @@
+.canvasContainer {
+    @apply flex flex-col items-center;
+}
+
+.canvas {
+    @apply border border-black;
+}
+
+.buttonGroup {
+    @apply mt-2;
+}
+
+.clearButton {
+    @apply bg-yellow-500 text-white p-2 rounded mr-2;
+}
+
+.saveButton {
+    @apply bg-green-500 text-white p-2 rounded;
+}

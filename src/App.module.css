@@ -1,0 +1,15 @@
+.header {
+    @apply bg-blue-600 text-white p-4;
+}
+
+.headerTitle {
+    @apply text-2xl;
+}
+
+.main {
+    @apply flex-grow p-4;
+}
+
+.footer {
+    @apply bg-blue-600 text-white p-4 text-center;
+}

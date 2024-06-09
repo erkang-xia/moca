@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Question4.module.css';
 import Input from '../../Input/Input';
-import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import { QUESTION_5 } from "../../../constants/clientRoute";
-import axios from "../../../api/axios"
+import axios from "../../../api/axios";
+// POST_ANIMAL_NAMES
 import { AWS_CLOUDFRONT, GET_ANIMAL } from "../../../constants/api";
+
 import { useAuth } from "../../../contexts/AuthContext";
 
 const Question4 = ({ question }) => {
     const [animals, setAnimals] = useState(null);
+    const [animalNames, setAnimalNames] = useState([]);
     const testId = useAuth().testId;
+    const navigate = useNavigate();
 
     useEffect(() => {
         const getAnimals = async () => {
@@ -22,7 +26,22 @@ const Question4 = ({ question }) => {
         };
 
         getAnimals();
-    }, [testId]);  // Added testId as a dependency
+    }, [testId]);
+
+    const handleInputChange = (index, value) => {
+        const newAnimalNames = [...animalNames];
+        newAnimalNames[index] = value;
+        setAnimalNames(newAnimalNames);
+    };
+
+    const handleSubmit = async () => {
+        try {
+            // await axios.post(`${POST_ANIMAL_NAMES}/${testId}`, { names: animalNames });
+            navigate(QUESTION_5);
+        } catch (error) {
+            console.log('Error submitting animal names:', error);
+        }
+    };
 
     if (!animals || animals.length === 0) {
         return <div>Loading animals...</div>;  // Display a loading message or spinner here
@@ -31,24 +50,28 @@ const Question4 = ({ question }) => {
     return (
         <div className={styles.question}>
             <h2>Question 4 Naming</h2>
-            {console.log(question)}
             <p>Tell me the name of this animal.</p>
-            <div className={styles.image_container}>
+            <div className={styles.imageContainer}>
                 {animals.map((animal, index) => (
-                    <img
-                        key={index}
-                        src={`${AWS_CLOUDFRONT}${animal}`}
-                        alt={`Animal ${index + 1}`}
-                        width="256"
-                        height="256"
-                    />
+                    <div key={index} className={styles.imageWrapper}>
+                        <img
+                            src={`${AWS_CLOUDFRONT}${animal}`}
+                            alt={`Animal ${index + 1}`}
+                            width="256"
+                            height="256"
+                        />
+                        <input
+                            type="text"
+                            placeholder="Enter name"
+                            value={animalNames[index] || ''}
+                            onChange={(e) => handleInputChange(index, e.target.value)}
+                            className={styles.inputField}
+                        />
+                    </div>
                 ))}
-                <div className={styles.input_container}>
-                    <Input/>
-                    <button>
-                        <Link to={QUESTION_5}>Submit</Link>
-                    </button>
-                </div>
+            </div>
+            <div className={styles.inputContainer}>
+                <button onClick={handleSubmit} className={styles.submitButton}>Submit</button>
             </div>
         </div>
     );
