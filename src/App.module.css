@@ -7,7 +7,7 @@
 }
 
 .main {
-    @apply flex-grow p-4;
+    @apply  min-h-screen;
 }
 
 .footer {

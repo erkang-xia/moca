@@ -41,7 +41,6 @@ const Question2 = () => {
                     className={styles.geometryImage}
                 />
             </div>
-            <Test />
         </div>
     );
 };

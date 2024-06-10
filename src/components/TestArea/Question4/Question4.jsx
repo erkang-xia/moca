@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './Question4.module.css';
 import Input from '../../Input/Input';
 import { useNavigate } from 'react-router-dom';
-import { QUESTION_5 } from "../../../constants/clientRoute";
+import {MEMORY} from "../../../constants/clientRoute";
 import axios from "../../../api/axios";
 // POST_ANIMAL_NAMES
 import { AWS_CLOUDFRONT, GET_ANIMAL } from "../../../constants/api";
@@ -37,7 +37,7 @@ const Question4 = ({ question }) => {
     const handleSubmit = async () => {
         try {
             // await axios.post(`${POST_ANIMAL_NAMES}/${testId}`, { names: animalNames });
-            navigate(QUESTION_5);
+            navigate(MEMORY);
         } catch (error) {
             console.log('Error submitting animal names:', error);
         }

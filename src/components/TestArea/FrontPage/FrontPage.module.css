@@ -1,0 +1,76 @@
+.container {
+    @apply  flex flex-row min-h-screen;
+}
+
+
+.leftSection {
+    @apply  min-h-screen w-1/3  text-left  flex flex-col  p-16 bg-lightGray;
+}
+
+.rightSection {
+    @apply min-h-screen w-2/3 text-left p-32 ;
+}
+
+.header {
+    @apply text-left h-1/2 ;
+}
+
+.headerTitle {
+    @apply text-gray-700 h-1/2 pt-20;
+}
+
+.subHeaderTitle {
+    @apply text-4xl font-bold h-1/2;
+}
+
+.infoContainer {
+    @apply flex h-1/4;
+}
+
+.infoItem {
+    @apply text-start  ;
+}
+
+.infoLabel {
+    @apply text-gray-600;
+}
+
+.infoValue {
+    @apply text-base font-semibold;
+}
+
+.instructions {
+    @apply h-2/3 pt-6 mt-2;
+}
+
+.instructionsTitle {
+    @apply text-4xl mb-2 text-gray-700;
+}
+
+.instructionsList {
+    @apply list-disc list-inside text-gray-700 mt-5;
+}
+
+.link {
+    @apply text-blue-500 underline;
+}
+
+.buttonContainer {
+    @apply  flex space-x-4 ;
+}
+
+.primaryButton {
+    @apply bg-primaryColor text-white py-2 px-4 rounded;
+}
+
+.secondaryButton {
+    @apply border border-primaryColor text-primaryColor py-2 px-4 rounded;
+}
+
+.footer {
+    @apply  text-blue-500 space-x-4 h-1/4 pt-14;
+}
+
+.footerLink {
+    @apply text-xs;
+}

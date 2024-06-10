@@ -1,4 +1,5 @@
 export const HOME = '/';
+export const FRONT_PAGE = '/test';
 export const LOGIN = '/login';
 export const QUESTION_1 = '/test/Q1';
 export const QUESTION_2 = '/test/Q2';

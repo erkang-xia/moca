@@ -17,19 +17,22 @@ import Language_fluency from "./components/TestArea/Language/Language_fluency";
 import Abstraction from "./components/TestArea/Abstraction/Abstraction";
 import Orientation from "./components/TestArea/Orientation /Orientation";
 import Memory_test from "./components/TestArea/Memory/Memory_test";
-import styles from './App.module.css'; // Importing CSS module
+import styles from './App.module.css';
+import FrontPage from "./components/TestArea/FrontPage/FrontPage";
+import ChatBox from "./components/ChatBox/ChatBox"; // Importing CSS module
 
 export default function App() {
     return (
-        <div className="min-h-screen bg-gray-100 flex flex-col">
-            <header className={styles.header}>
-                <h1 className={styles.headerTitle}>MOCA Test</h1>
-            </header>
+        <div>
+            {/*<header className={styles.header}>*/}
+            {/*    <h1 className={styles.headerTitle}>MOCA Test</h1>*/}
+            {/*</header>*/}
             <main className={styles.main}>
                 <Routes>
                     <Route path="/" element={<Login />} />
+                    <Route path={ROUTES.FRONT_PAGE} element={<FrontPage />} />
                     <Route path={ROUTES.LOGIN} element={<Login />} />
-                    <Route path="/test" element={<Test />} />
+                    <Route path="/t" element={<Test />} />
                     <Route path={ROUTES.MEMORY} element={<Memory />} />
                     <Route path={ROUTES.MEMORY_TEST} element={<Memory_test />} />
                     <Route path={ROUTES.ATTENTION_MAIN} element={<Attention_main />} />
@@ -39,6 +42,7 @@ export default function App() {
                     <Route path={ROUTES.LANGUAGE_FLUENCY} element={<Language_fluency />} />
                     <Route path={ROUTES.ABSTRACTION} element={<Abstraction />} />
                     <Route path={ROUTES.ORIENTATION} element={<Orientation />} />
+                    <Route path='/chat' element={<ChatBox />} />
 
                     <Route element={<PrivateRoute />}>
                         <Route path={ROUTES.QUESTION_1} element={<Question1 />} />
@@ -49,9 +53,9 @@ export default function App() {
                     </Route>
                 </Routes>
             </main>
-            <footer className={styles.footer}>
-                MOCA Test App &copy; 2023
-            </footer>
+            {/*<footer className={styles.footer}>*/}
+            {/*    MOCA Test App &copy; 2023*/}
+            {/*</footer>*/}
         </div>
     );
 }

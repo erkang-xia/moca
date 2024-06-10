@@ -1,17 +1,16 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-
+import styles from './test.module.css';
 const Test = () => {
-  const navigate = useNavigate();
 
-  const func = () => {
-    navigate('/test/Q3');
-  };
 
   return (
-    <div>
-      <button onClick={func}>click me</button>
-    </div>
+      <div className={styles.flexContainer}>
+        <div className={styles.item1}>Item 1</div>
+        <div className={styles.item2}>Item 2</div>
+        <div className={styles.item3}>Item 3</div>
+      </div>
+
+
   );
 };
 
