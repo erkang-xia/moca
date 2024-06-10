@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Question4.module.css';
-import Input from '../../Input/Input';
 import { useNavigate } from 'react-router-dom';
 import {MEMORY} from "../../../constants/clientRoute";
 import axios from "../../../api/axios";
@@ -9,7 +8,7 @@ import { AWS_CLOUDFRONT, GET_ANIMAL } from "../../../constants/api";
 
 import { useAuth } from "../../../contexts/AuthContext";
 
-const Question4 = ({ question }) => {
+const Question4 = () => {
     const [animals, setAnimals] = useState(null);
     const [animalNames, setAnimalNames] = useState([]);
     const testId = useAuth().testId;

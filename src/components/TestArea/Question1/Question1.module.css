@@ -1,15 +1,31 @@
-.question {
-    @apply max-w-3xl mx-auto p-4 bg-white shadow-md rounded-lg;
+.container {
+    @apply flex flex-col items-center justify-center min-h-screen p-4 bg-gray-100;
 }
 
-.questionTitle {
-    @apply text-2xl font-bold mb-4;
+.title {
+    @apply text-4xl font-bold mb-4 text-gray-700;
 }
 
-.questionText {
-    @apply mb-4;
+.text {
+    @apply text-lg mb-8 text-gray-600;
 }
 
 .canvasWrapper {
-    @apply flex justify-center items-center mt-4;
+    @apply mb-8;
+}
+
+.progressBar {
+    @apply flex space-x-2 w-full max-w-4xl mt-4;
+}
+
+.section {
+    @apply flex-grow h-4 bg-gray-300 rounded;
+}
+
+.completed {
+    @apply bg-green-500;
+}
+
+.current {
+    @apply bg-green-300;
 }

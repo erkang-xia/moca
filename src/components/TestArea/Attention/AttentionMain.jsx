@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ATTENTION_CLICK } from '../../../constants/clientRoute';
-import styles from './Attention_main.module.css'; // Importing CSS module
+import styles from './AttentionMain.module.css'; // Importing CSS module
 
-const Attention_main = () => {
+const AttentionMain = () => {
     const instructionUrl = ['/attention_intro.mp3', '/attention_intro2.mp3']; // URL for the instruction audio
     const [instructionalAudioIndex, setInstructionalAudioIndex] = useState(0);
     const sequenceUrls = [['/7.mp3', '/2.mp3', '/8.mp3', '/5.mp3', '/4.mp3', '/1.mp3'], ['/2.mp3', '/4.mp3', '/7.mp3']];
@@ -120,4 +120,4 @@ const Attention_main = () => {
     );
 };
 
-export default Attention_main;
+export default AttentionMain;

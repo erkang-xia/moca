@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import { ABSTRACTION } from "../../../constants/clientRoute";
-import styles from './Language_fluency.module.css'; // Importing CSS module
+import styles from './LanguageFluency.module.css'; // Importing CSS module
 
 const LanguageFluency = () => {
     const instructionUrl = "/language_intro3.mp3"; // URL for the instruction audio

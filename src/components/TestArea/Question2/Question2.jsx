@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Question2.module.css';
 import DrawingPad from './DrawingPad';
-import Test from '../../test';
 import { useAuth } from "../../../contexts/AuthContext";
-import { CLOCK, GEOMETRY, GET_GEOMETRY, POST_GEOMETRY } from "../../../constants/api";
+import {GEOMETRY, GET_GEOMETRY, POST_GEOMETRY } from "../../../constants/api";
 import axios from "../../../api/axios";
 import { QUESTION_3 } from "../../../constants/clientRoute";
 

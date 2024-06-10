@@ -6,6 +6,8 @@ export const GET_GEOMETRY = '/test/visuospatial/geometry';
 export const POST_GEOMETRY = '/test/visuospatial/geometry';
 export const POST_CLOCK = '/test/visuospatial/clock';
 export const POST_CLOCK_EXPRESSION = '/test/visuospatial/clock_expression';
+export const POST_CHAT = '/chat/chat';
+
 export const CLOCK = 'clock';
 export const GEOMETRY = 'geometry';
 

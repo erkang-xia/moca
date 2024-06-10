@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { LANGUAGE } from "../../../constants/clientRoute";
-import styles from './Attention_math.module.css'; // Importing CSS module
+import styles from './AttentionMath.module.css'; // Importing CSS module
 
-const Attention_math = () => {
+const AttentionMath = () => {
     const [currentNumber, setCurrentNumber] = useState(100);
     const [userInput, setUserInput] = useState('');
     const [history, setHistory] = useState([]);
@@ -58,4 +58,4 @@ const Attention_math = () => {
     );
 };
 
-export default Attention_math;
+export default AttentionMath;

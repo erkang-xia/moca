@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { ORIENTATION } from "../../../constants/clientRoute";
-import styles from './Memory_test.module.css'; // Importing CSS module
+import styles from './MemoryTest.module.css'; // Importing CSS module
 
-const Memory_test = () => {
+const MemoryTest = () => {
     const [words, setWords] = useState(Array(5).fill(''));  // Initializes an array of 5 empty strings
     const [submission, setSubmission] = useState(null);
     const navigate = useNavigate();
@@ -44,4 +44,4 @@ const Memory_test = () => {
     );
 };
 
-export default Memory_test;
+export default MemoryTest;

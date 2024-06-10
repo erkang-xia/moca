@@ -4,19 +4,14 @@ import './index.css';
 import App from './App';
 import AuthProvider from './contexts/AuthContext';
 import {BrowserRouter} from 'react-router-dom';
-import {DevSupport} from "@react-buddy/ide-toolbox";
-import {ComponentPreviews, useInitial} from "./dev";
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     // <React.StrictMode>
     <BrowserRouter>
         <AuthProvider>
-            <DevSupport ComponentPreviews={ComponentPreviews}
-                        useInitialHook={useInitial}
-            >
-                <App/>
-            </DevSupport>
+            <App/>
         </AuthProvider>
     </BrowserRouter>
     // </React.StrictMode>

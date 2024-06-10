@@ -10,7 +10,7 @@ const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   //TODO: Fix this bug, why its keep refreashing?? use effect? consider using useref
   const [userId, setUserId] = useState(null);
-  const [testId, setTestId] = useState( crypto.randomUUID());
+  const [testId] = useState( crypto.randomUUID());
 
   console.log(testId)
   console.log("userid:" + userId);
