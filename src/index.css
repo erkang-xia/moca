@@ -1,3 +1,41 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Default font size */
+html {
+    font-size: 16px;
+}
+
+/* Base styles (smallest screens by default) */
+html {
+    font-size: 14px; /* Default font size for small devices */
+}
+
+/* Medium screens: larger than 768px */
+@media (min-width: 768px) {
+    html {
+        font-size: 12px; /* Slightly larger font size for medium devices */
+    }
+}
+
+/* Large screens: larger than 1024px */
+@media (min-width: 1024px) {
+    html {
+        font-size: 16px; /* Larger font size for large devices */
+    }
+}
+
+/* Extra large screens: larger than 1440px */
+@media (min-width: 1440px) {
+    html {
+        font-size: 23px; /* Even larger font size for extra large devices */
+    }
+}
+
+/* Ultra large screens: larger than 1900px */
+@media (min-width: 1900px) {
+    html {
+        font-size: 30px; /* Maximum font size for ultra large devices */
+    }
+}

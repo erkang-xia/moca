@@ -1,19 +1,19 @@
 .headbarContainer {
-    @apply bg-gradient-to-r from-primaryColor via-white to-white p-4;
+    @apply  py-2 md:p-0;
 }
 
 .headbarContent {
-    @apply container mx-auto flex justify-between items-center;
+    @apply  flex justify-between items-center;
 }
 
 .logo {
-    @apply text-xl font-semibold text-white;
+    @apply text-logo font-bold py-2 px-2 ml-5;
 }
 
 .navLink {
     @apply text-gray-300 hover:text-white;
 }
 
-.loginButton {
-    @apply  text-primaryColor px-4 py-2 rounded hover:bg-blue-600;
+.exitButton {
+    @apply  rounded text-sm font-semibold px-2 py-1 hover:bg-primaryBlue mr-6;
 }

@@ -4,8 +4,10 @@ import HeadBar from './HeadBar/HeadBar';
 import {FRONT_PAGE, LOGIN} from "../constants/clientRoute";
 
 
+
 const LayoutRoute = ({ children }) => {
     const location = useLocation();
+
 
     // Define the routes where you want to display the HeadBar
     const routesWithHeadBar = [
@@ -15,18 +17,17 @@ const LayoutRoute = ({ children }) => {
     ];
 
     const shouldNotShowHeadBar = routesWithHeadBar.includes(location.pathname);
-    console.log("here i checked ")
     return (
         <div>
             {!shouldNotShowHeadBar && (
-
                 <header>
-                    <HeadBar />
+                    <HeadBar location = {location.pathname}/>
                 </header>
             )}
             <main>
                 <Outlet/>
             </main>
+
         </div>
     );
 };

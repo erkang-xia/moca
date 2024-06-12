@@ -1,29 +1,22 @@
 .container {
-    @apply flex flex-col items-center justify-center min-h-screen p-4 bg-gray-100;
+    @apply flex flex-col flex-grow px-7 py-4 w-full md:w-7/12  mx-auto ;
 }
 
 .title {
-    @apply text-4xl font-bold mb-4 text-gray-700;
+    @apply text-1.55 font-semibold text-primaryDark py-2;
 }
 
 .text {
-    @apply text-lg mb-8 text-gray-600;
+    @apply text-base text-gray-700 ;
 }
 
 .canvasWrapper {
-    @apply mb-8;
+    @apply mt-8;
 }
 
-.progressBar {
-    @apply flex space-x-2 w-full max-w-4xl mt-4;
-}
-
-.section {
-    @apply flex-grow h-4 bg-gray-300 rounded;
-}
 
 .completed {
-    @apply bg-green-500;
+    @apply p-0;
 }
 
 .current {

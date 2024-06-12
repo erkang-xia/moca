@@ -46,13 +46,13 @@ export default function App() {
                         <Route path={ROUTES.ORIENTATION} element={<Orientation />} />
                         <Route path='/chat' element={<ChatBox />} />
 
-                        <Route element={<PrivateRoute />}>
+                        {/*<Route element={<PrivateRoute />}>*/}
                             <Route path={ROUTES.QUESTION_1} element={<Question1 />} />
                             <Route path={ROUTES.QUESTION_2} element={<Question2 />} />
                             <Route path={ROUTES.QUESTION_3} element={<Question3 />} />
                             <Route path={ROUTES.QUESTION_4} element={<Question4 />} />
                             <Route path={ROUTES.QUESTION_5} element={<Question5 />} />
-                        </Route>
+                        {/*</Route>*/}
                     </Route>
                 </Routes>
             </main>

@@ -1,30 +1,12 @@
-/*.canvas_container {*/
-/*  position: relative;*/
-/*  width: 300px;*/
-/*  height: 300px;*/
-/*  border: 1px solid black;*/
-/*}*/
-/*!* Base class for all buttons *!*/
-/*.canvas_button_base {*/
-/*  position: absolute;*/
-/*  transform: translate(*/
-/*    -50%,*/
-/*    -50%*/
-/*  ); !* Prevents the button from overflowing the boundary *!*/
-/*}*/
-
-/*!* Specific class for default state *!*/
-/*.canvas_button {*/
-/*  !* Additional styles specific to the default state can go here *!*/
-/*}*/
-
-/*!* Specific class for clicked state *!*/
-/*.canvas_button_clicked {*/
-/*  background-color: rgb(168, 213, 154); !* Specific style for clicked state *!*/
-/*}*/
-/* TailwindCSS cannot cover these styles, so we keep them here */
+.container {
+  @apply  relative flex flex-row-reverse bg-primaryBlueLight ;
+}
 .canvasContainer {
-  @apply relative w-[300px] h-[300px] border border-black;
+  @apply relative w-[326px] h-[300px]    mx-auto ;
+}
+
+.canvas{
+  @apply  p-0;
 }
 
 /* Base class for all buttons */
@@ -34,22 +16,22 @@
 
 /* Specific class for default state */
 .canvasButton {
-  @apply bg-blue-500 text-white p-2 rounded-full;
+  @apply bg-primaryBlueMedium font-light text-1.625  px-3 rounded-full hover:bg-primaryGreen;
 }
 
 /* Specific class for clicked state */
 .canvasButtonClicked {
-  @apply bg-green-500 text-white p-2 rounded-full;
+  @apply bg-primaryGreen text-1.625 text-white  px-3 rounded-full;
 }
 
 .buttonGroup {
-  @apply mt-4 flex justify-center space-x-8;
+  @apply mt-4 flex justify-end;
 }
 
 .backButton {
-  @apply bg-yellow-500 text-white p-2 rounded;
+  @apply absolute bottom-4 left-4 border border-primaryDark text-primaryDark px-2 py-1 rounded ;
 }
 
 .submitButton {
-  @apply bg-green-500 text-white p-2 rounded;
+  @apply bg-primaryGreen text-white p-2 rounded mt-2;
 }
