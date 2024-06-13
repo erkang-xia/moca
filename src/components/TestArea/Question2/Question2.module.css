@@ -3,15 +3,23 @@
 }
 
 .instructionContainer{
-    @apply flex flex-col flex-grow  pr-7 mt-10 w-full md:w-75  ;
+    @apply flex flex-col flex-grow  md:pr-7 md:mt-10 w-full md:w-75  ;
 
 }
 .title {
-    @apply text-1.55 font-semibold text-primaryDark py-2;
+    @apply flex flex-row text-1.55 font-semibold text-primaryDark py-2;
 }
 
 .geometryImage{
-    @apply mt-4
+    @apply mx-auto md:ml-4
+}
+
+.imageContainer{
+    @apply relative
+}
+
+.speaker{
+    @apply absolute bottom-56 px-1.5 pb-0.5 bg-primaryBlue rounded-lg mr-auto
 }
 
 .text {
@@ -19,5 +27,5 @@
 }
 
 .canvasWrapper {
-    @apply mt-16  ;
+    @apply md:mt-16  ;
 }

@@ -5,6 +5,7 @@ import { useAuth } from "../../../contexts/AuthContext";
 import {GEOMETRY, GET_GEOMETRY, POST_GEOMETRY } from "../../../constants/api";
 import axios from "../../../api/axios";
 import { QUESTION_3 } from "../../../constants/clientRoute";
+import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 
 const Question2 = () => {
     const [imageUrl, setImageUrl] = useState('');
@@ -28,18 +29,25 @@ const Question2 = () => {
 
     return (
         <div className={styles.container}>
+
             <div className={styles.instructionContainer}>
-                <h2 className={styles.title}>Visuoconstructional Skills</h2>
+                <h2 className={styles.title}>
+                    Visuoconstructional Skills
+                </h2>
                 <p className={styles.text}> Copy this drawing on the blue area as accurately as you can.</p>
                 <p className={styles.text}> You can also draw on a paper, take a picture and upload it </p>
-
-                <img
-                    src={imageUrl}
-                    alt="geometry"
-                    width="256"
-                    height="256"
-                    className={styles.geometryImage}
-                />
+                <div className={styles.imageContainer}>
+                    <div className={styles.speaker}>
+                        <VolumeUpIcon/>
+                    </div>
+                    <img
+                        src={imageUrl}
+                        alt="geometry"
+                        width="256"
+                        height="256"
+                        className={styles.geometryImage}
+                    />
+                </div>
 
             </div>
 

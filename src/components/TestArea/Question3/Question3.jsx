@@ -6,6 +6,7 @@ import { CLOCK, POST_CLOCK, POST_CLOCK_EXPRESSION } from "../../../constants/api
 import TimeExpressions, { PHRASE_COUNT } from "../../../constants/clock";
 import axios from "../../../api/axios";
 import { useAuth } from "../../../contexts/AuthContext";
+import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 
 const Question3 = ({ question }) => {
     question = TimeExpressions[Math.floor(Math.random() * (PHRASE_COUNT + 1))];
@@ -29,11 +30,18 @@ const Question3 = ({ question }) => {
     }, [question, testId]);
 
     return (
-        <div className={styles.question}>
-            <h2>Question 3</h2>
-            <p>{question}</p>
-            <div className={styles.canvasWrapper}>
-                <DrawingPad question={QUESTION_4} path={POST_CLOCK} type={CLOCK} />
+        <div className={styles.container}>
+            <div className={styles.instructionContainer}>
+                <h2 className={styles.title}>
+                    Visuoconstructional Skills
+                    <div className={styles.speaker}>
+                        <VolumeUpIcon/>
+                    </div>
+                </h2>
+                <p className={styles.text}>{question}</p>
+            </div>
+            <div>
+            <DrawingPad question={QUESTION_4} path={POST_CLOCK} type={CLOCK} />
             </div>
         </div>
     );

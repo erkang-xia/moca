@@ -7,6 +7,7 @@ import axios from "../../../api/axios";
 import { AWS_CLOUDFRONT, GET_ANIMAL } from "../../../constants/api";
 
 import { useAuth } from "../../../contexts/AuthContext";
+import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 
 const Question4 = () => {
     const [animals, setAnimals] = useState(null);
@@ -47,9 +48,16 @@ const Question4 = () => {
     }
 
     return (
-        <div className={styles.question}>
-            <h2>Question 4 Naming</h2>
-            <p>Tell me the name of this animal.</p>
+        <div className={styles.container}>
+            <div className={styles.instructionContainer}>
+                <h2 className={styles.title}>
+                    Naming
+                    <div className={styles.speaker}>
+                        <VolumeUpIcon/>
+                    </div>
+                </h2>
+                <p className={styles.text}>Tell me the name of this animal.</p>
+            </div>
             <div className={styles.imageContainer}>
                 {animals.map((animal, index) => (
                     <div key={index} className={styles.imageWrapper}>

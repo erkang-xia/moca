@@ -107,9 +107,9 @@ const DrawingPad = ({ question, path, type }) => {
                 accept="image/*" // Restrict file type to images
             />
             <label htmlFor="fileInput" className={styles.uploadButton}>
-              Upload Image
+              Upload
             </label>
-            <button onClick={saveCanvas} className={styles.uploadButton}>Upload</button>
+            <button onClick={saveCanvas} className={styles.saveButton}>Submit</button>
           </div>
         </div>
       </div>

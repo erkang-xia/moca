@@ -1,10 +1,10 @@
 .canvasContainer {
-    @apply  w-[500px] h-[350px] bg-primaryBlueLight rounded-lg;
+    @apply  md:w-[500px] h-[350px] bg-primaryBlueLight rounded-lg;
 }
 
 
 .buttonGroup {
-    @apply flex flex-row justify-between mt-4;
+    @apply flex flex-row justify-between mt-6;
 }
 
 .clearButton {
@@ -12,7 +12,7 @@
 }
 
 .saveButton {
-    @apply border border-primaryGreen bg-primaryGreen text-white px-2 py-1  rounded;
+    @apply  bg-primaryGreen text-white px-2 py-1  rounded;
 }
 
 .uploadButton{
