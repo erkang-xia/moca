@@ -1,13 +1,19 @@
 import React from 'react';
 import styles from './Question1.module.css'; // Importing CSS module
 import Canvas from './Canvas';
-
+import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 
 const Question1 = () => {
 
     return (
         <div className={styles.container}>
-            <h2 className={styles.title}>1. Trail Making</h2>
+            <div className={styles.title}>
+                <h2 >1. Trail Making</h2>
+                <div className={'px-1.5 pb-0.5 bg-primaryBlue rounded-lg'}>
+                    <VolumeUpIcon />
+                </div>
+
+            </div>
             <p className={styles.text}>
                 Please draw a line going from a number to a letter in ascending order.
             </p>

@@ -1,5 +1,5 @@
 .container {
-  @apply  relative flex flex-row-reverse bg-primaryBlueLight ;
+  @apply  relative flex flex-row-reverse bg-primaryBlueLight rounded;
 }
 .canvasContainer {
   @apply relative w-[326px] h-[300px]    mx-auto ;
@@ -33,5 +33,5 @@
 }
 
 .submitButton {
-  @apply bg-primaryGreen text-white p-2 rounded mt-2;
+  @apply bg-primaryGreen text-white px-2 py-1 rounded mt-2;
 }

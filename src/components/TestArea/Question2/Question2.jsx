@@ -27,11 +27,12 @@ const Question2 = () => {
     }, [testId]);
 
     return (
-        <div className={styles.question}>
-            <h2>Question 2</h2>
-            <p>Copy this drawing as accurately as you can.</p>
-            <div className={styles.canvasWrapper}>
-                <DrawingPad question={QUESTION_3} path={POST_GEOMETRY} type={GEOMETRY} />
+        <div className={styles.container}>
+            <div className={styles.instructionContainer}>
+                <h2 className={styles.title}>Visuoconstructional Skills</h2>
+                <p className={styles.text}> Copy this drawing on the blue area as accurately as you can.</p>
+                <p className={styles.text}> You can also draw on a paper, take a picture and upload it </p>
+
                 <img
                     src={imageUrl}
                     alt="geometry"
@@ -39,6 +40,12 @@ const Question2 = () => {
                     height="256"
                     className={styles.geometryImage}
                 />
+
+            </div>
+
+            <div className={styles.canvasWrapper}>
+                <DrawingPad question={QUESTION_3} path={POST_GEOMETRY} type={GEOMETRY}/>
+
             </div>
         </div>
     );

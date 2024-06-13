@@ -3,7 +3,7 @@
 }
 
 .title {
-    @apply text-1.55 font-semibold text-primaryDark py-2;
+    @apply flex flex-row justify-between text-1.55 font-semibold text-primaryDark py-2;
 }
 
 .text {

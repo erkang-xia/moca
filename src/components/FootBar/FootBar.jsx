@@ -1,23 +1,12 @@
 import React from 'react';
-import styles from './HeadBar.module.css';
-import ProgressBar from "./ProgressBar";
+import ChatBox from "../ChatBox/ChatBox";
 
-const HeadBar = ({location}) => {
+const FootBar = () => {
     return (
-        <div className={styles.headbarContainer}>
-            <div className={styles.headbarContent}>
-                <div className={styles.logo}>
-                    MOCA
-                </div>
-                <button className={styles.exitButton}>
-                    Exit
-                </button>
-            </div>
-            <div>
-                <ProgressBar location={location} />
-            </div>
+        <div>
+            <ChatBox></ChatBox>
         </div>
     );
 };
 
-export default HeadBar;
+export default FootBar;

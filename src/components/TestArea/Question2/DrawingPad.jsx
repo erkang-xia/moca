@@ -2,29 +2,45 @@ import React, { useRef, useEffect, useState } from 'react';
 import { useAuth } from "../../../contexts/AuthContext";
 import axios from "../../../api/axios";
 import { useNavigate } from "react-router-dom";
-import styles from './DrawingPad.module.css'; // Importing CSS module
+import styles from './DrawingPad.module.css';
 
 const DrawingPad = ({ question, path, type }) => {
   const canvasRef = useRef(null);
   const contextRef = useRef(null);
   const [isDrawing, setIsDrawing] = useState(false);
+  const [image, setImage] = useState(null);
   const navigate = useNavigate();
   const testId = useAuth().testId;
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    canvas.width = window.innerWidth; // Scale canvas pixel density
-    canvas.height = window.innerHeight;
-    canvas.style.width = `${window.innerWidth / 2}px`;
-    canvas.style.height = `${window.innerHeight / 2}px`;
+    canvas.width = 500;
+    canvas.height = 350;
 
     const context = canvas.getContext('2d');
-    context.scale(2, 2); // Scale context to adjust for canvas density scaling
     context.lineCap = 'round';
-    context.strokeStyle = 'black';
-    context.lineWidth = 5;
+    context.strokeStyle = '#13598B';
+    context.lineWidth = 2;
     contextRef.current = context;
-  }, []);
+
+    // Draw the loaded image if available
+    if (image) {
+      context.drawImage(image, 0, 0, canvas.width, canvas.height);
+    }
+  }, [image]);
+
+  const handleImageUpload = event => {
+    const file = event.target.files[0];
+    if (file && file.type.startsWith('image/')) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const img = new Image();
+        img.onload = () => setImage(img);
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   const startDrawing = ({ nativeEvent }) => {
     const { offsetX, offsetY } = nativeEvent;
@@ -51,9 +67,10 @@ const DrawingPad = ({ question, path, type }) => {
     const canvas = canvasRef.current;
     const context = canvas.getContext('2d');
     context.clearRect(0, 0, canvas.width, canvas.height);
+    setImage(null); // Clear the image state as well
   };
 
-  const saveCanvas = () => {
+  const saveCanvas = async () => {
     const canvas = canvasRef.current;
     canvas.toBlob(async (blob) => {
       const formData = new FormData();
@@ -77,11 +94,23 @@ const DrawingPad = ({ question, path, type }) => {
             onMouseMove={draw}
             onMouseOut={stopDrawing}
             ref={canvasRef}
-            className={styles.canvas}
         />
+
         <div className={styles.buttonGroup}>
           <button onClick={clearCanvas} className={styles.clearButton}>Clear</button>
-          <button onClick={saveCanvas} className={styles.saveButton}>Save as Image</button>
+          <div>
+            <input
+                type="file"
+                onChange={handleImageUpload}
+                style={{display: 'none'}} // Hide the default file input
+                id="fileInput"
+                accept="image/*" // Restrict file type to images
+            />
+            <label htmlFor="fileInput" className={styles.uploadButton}>
+              Upload Image
+            </label>
+            <button onClick={saveCanvas} className={styles.uploadButton}>Upload</button>
+          </div>
         </div>
       </div>
   );

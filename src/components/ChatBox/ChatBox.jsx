@@ -29,7 +29,7 @@ const Chatbox = () => {
 
     return (
         <div>
-            <button onClick={toggleChatbox} className="p-2 bg-blue-500 text-white rounded-lg fixed bottom-4 right-4">
+            <button onClick={toggleChatbox} className="p-2 bg-primaryBlueDark text-white rounded-full fixed bottom-4 right-4">
                 <ContactSupportIcon/>
 
             </button>

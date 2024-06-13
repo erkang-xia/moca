@@ -1,19 +1,20 @@
 .canvasContainer {
-    @apply flex flex-col items-center;
+    @apply  w-[500px] h-[350px] bg-primaryBlueLight rounded-lg;
 }
 
-.canvas {
-    @apply border border-black;
-}
 
 .buttonGroup {
-    @apply mt-2;
+    @apply flex flex-row justify-between mt-4;
 }
 
 .clearButton {
-    @apply bg-yellow-500 text-white p-2 rounded mr-2;
+    @apply border border-primaryDark text-primaryDark px-2 py-1 rounded ;
 }
 
 .saveButton {
-    @apply bg-green-500 text-white p-2 rounded;
+    @apply border border-primaryGreen bg-primaryGreen text-white px-2 py-1  rounded;
+}
+
+.uploadButton{
+    @apply border border-primaryGreen text-primaryGreen px-2 py-1 rounded mr-4;
 }
